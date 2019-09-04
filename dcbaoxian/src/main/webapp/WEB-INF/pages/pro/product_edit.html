@@ -1,0 +1,221 @@
+<!-- Content Wrapper. Contains page content -->
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		产品添加 <small>Preview</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i>首页</a></li>
+
+		<li class="active">产品添加</li>
+	</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+	<!-- SELECT2 EXAMPLE -->
+	<div class="box box-default">
+		<div class="box-header with-border">
+			<h3 class="box-title"></h3>
+
+			<div class="box-tools pull-right">
+				<!-- 最小化 -->
+				<button type="button" class="btn btn-box-tool"
+					data-widget="collapse">
+					<i class="fa fa-minus"></i>
+				</button>
+				<!-- 关闭 -->
+				<button type="button" class="btn btn-box-tool" data-widget="remove">
+					<i class="fa fa-remove"></i>
+				</button>
+			</div>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<div class="row">
+
+
+
+				<!-- /.col -->
+				<div class="col-md-4">
+					<div class="form-group">
+						<label>险种名称</label> <input type="text" class="form-control"
+							name="developNumber" id="developNumber" placeholder="险种名称">
+					</div>
+					<div class="form-group">
+						<label>承保公司</label> <input type="text" class="form-control"
+							name="developNumber" id="developNumber" placeholder="承保公司">
+					</div>
+					<div class="form-group">
+						<label>合作单位</label> <input type="text" class="form-control"
+							name="system" id="system" placeholder="合作单位">
+					</div>
+					
+					
+					
+				</div>
+				<div class="col-md-4">
+					
+					<div class="form-group">
+						<label>代理人手续费</label> <input type="text" class="form-control"
+							name="system" id="system" placeholder="/元">
+					</div>
+					
+					
+					<div class="form-group">
+						<label>大诚手续费</label> <input type="text" class="form-control"
+							name="system" id="system" placeholder="/元">
+					</div>
+				
+					<div class="form-group">
+						<label>备注</label>
+						<textarea rows="11" cols="20" class="form-control"
+							placeholder="主要功能" name="effect" id="effect"></textarea>
+					</div>
+					
+				</div>
+				<div class="col-md-4">
+				
+					<div style="height: 25px;"></div>
+					<div class="form-group">
+						<label>更新内容</label>
+						<input type="checkbox" name="hobby" value="保险方案" id="gx01">
+						<label for="gx01">保险方案</label>
+						<input type="checkbox" name="hobby" value="投保要求" id="gx02">
+						<label for="gx02">投保要求</label>
+						<input type="checkbox" name="hobby" value="理赔要求" id="gx03">
+						<label for="gx03">理赔要求</label>
+					</div>
+					<div class="form-group">
+		               <label for="exampleInputFile">保险方案</label>
+		                  <input type="file" id="li1" multiple="multiple" name="submitFile" disabled>
+		            </div>
+		            <div class="form-group">
+						<label>投保要求</label> <textarea rows="4" cols="20" class="form-control"
+							placeholder="投保要求" name="effect" id="li2" disabled></textarea>
+					</div>
+					<div class="form-group">
+						<label>理赔要求</label> <textarea rows="4" cols="20" class="form-control"
+							placeholder="理赔要求" name="effect" id="li3" disabled></textarea>
+					</div>
+		            
+		            
+				</div>
+
+
+
+				<!-- /.col -->
+				<div class="col-md-12">
+					<div class="box-footer">
+						<button type="button" class="btn btn-default btn-cancel">取消</button>
+						<button type="button" class="btn btn-info pull-right btn-save">保存</button>
+					</div>
+				</div>
+		
+
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.box-body -->
+
+	</div>
+	<!-- /.box -->
+
+</section>
+
+
+
+
+<script>
+  $(function () {
+	  showProvinceList();
+	  
+	  $(".box-footer")
+	  .on("click",".btn-cancel",doCancel)
+	  .on("click",".btn-save",doSave);
+   
+   
+      
+      //在tbody的checkbox对象上注册change事件
+       $(".box-body")
+      .on("change",'#gx01',doChangeState01);
+       $(".box-body")
+      .on("change",'#gx02',doChangeState02);
+       $(".box-body")
+      .on("change",'#gx03',doChangeState03);
+	  
+	  
+  })
+function doChangeState01() {
+	  var state=$(this).prop("checked");
+	  if(state){
+		  $('#li1').attr("disabled",false);
+	  }else{
+		  var file = $("#li1") ;
+		  file.after(file.clone().val(""));      
+		  file.remove();  
+		  $('#li1').attr("disabled",true);
+	  }
+}
+function doChangeState02() {
+	  var state=$(this).prop("checked");
+	  if(state){
+		  $('#li2').attr("disabled",false);
+	  }else{
+		  $("#li2").val("");
+		  $('#li2').attr("disabled",true);
+	  }
+}
+function doChangeState03() {
+	  var state=$(this).prop("checked");
+	  if(state){
+		  $('#li3').attr("disabled",false);
+	  }else{
+		  $("#li3").val("");
+		  $('#li3').attr("disabled",true);
+	  }
+}
+  
+  
+  
+  function showProvinceList() {
+	  $("#gx01").prop("checked",false);
+	  $("#gx02").prop("checked",false);
+	  $("#gx03").prop("checked",false);
+		$("#executor").append('<option value="">----- 请选择 -----</option>');
+		
+		
+	    	var url="submit/findUserNames.do";
+	 	   //3.ajax request
+	 	   
+	 	   $.getJSON(url,function(result){
+	 		  if(result.state==1){
+	 			var list = result.data;
+	 			for (var i = 0; i < list.length; i++) {
+	 				
+					var op = '<option value="' + list[i].username + '">' + list[i].username + '</option>';
+					$("#executor").append(op);
+				}
+	 		   }else{
+	 			  var op = '<option value=""></option>';
+					$("#executor").append(op);
+	 		   }
+	 	   });
+		
+	}
+  
+  
+  function doCancel(){
+	
+	$("#mainContentId").load("product/doProductUI.do");
+ }
+ function doSave(){
+	
+	 $("#mainContentId").load("product/doProductUI.do");
+ }
+ 
+</script>
+</body>
+</html>

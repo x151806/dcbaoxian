@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.pro.dao.ProProductDao">
+  
+   <insert id="insertobject" parameterType="com.dc.pro.entity.ProProduct">
+       insert into product_list 
+       (productId,insurance,status,underwrite,cooperator,agentCharge,dCCharge,putawayTime
+       ,soldOutTime,updateTime,updateContent,insurancePlan,amendsDemand,demand,remarks)
+       values
+       (#{productId},#{insurance},#{status},#{underwrite},#{cooperator},#{agentCharge},#{dCCharge},getdate()
+       ,#{soldOutTime},#{updateTime},#{updateContent},#{insurancePlan},#{amendsDemand},#{demand},#{remarks})
+    </insert>
+   
+  
+  
+   <update id="updateObject" 
+       parameterType="com.dc.pro.entity.ProProduct">
+         update product_list
+         <set>
+             
+             <if test="insurance!=null and insurance!=''">
+                insurance=#{insurance},
+             </if>
+             <if test="status!=null and status!=''">
+                status=#{status},
+             </if>
+             <if test="underwrite!=null and underwrite!=''">
+                underwrite=#{underwrite},
+             </if>
+             <if test="cooperator!=null and cooperator!=''">
+                cooperator=#{cooperator},
+             </if>
+             <if test="agentCharge!=null and agentCharge!=''">
+                agentCharge=#{agentCharge},
+             </if>
+             <if test="dCCharge!=null and dCCharge!=''">
+                dCCharge=#{dCCharge},
+             </if>
+
+             <if test="putawayTime!=null and putawayTime!=''">
+                putawayTime=#{putawayTime},
+             </if>
+             <if test="soldOutTime!=null and soldOutTime!=''">
+                soldOutTime=#{soldOutTime},
+             </if>
+             <if test="updateTime!=null and updateTime!=''">
+                updateTime=#{updateTime},
+             </if>
+             <if test="updateContent!=null and updateContent!=''">
+                updateContent=#{updateContent},
+             </if>
+             <if test="insurancePlan!=null and insurancePlan!=''">
+                insurancePlan=#{insurancePlan},
+             </if>
+             <if test="insureDemand!=null and insureDemand!=''">
+                insureDemand=#{insureDemand},
+             </if>
+             <if test="amendsDemand!=null and amendsDemand!=''">
+                amendsDemand=#{amendsDemand},
+             </if>
+             <if test="remarks!=null and remarks!=''">
+                remarks=#{remarks},
+             </if>
+          </set>
+        where productId=#{productId}
+    </update>
+   
+   
+  
+   
+  
+   <select id="getRowCount"
+           resultType="int">
+       
+	        select count(*) 
+	        from product_list 
+	        where 1=1 
+	        <if test="username!=null and username!=''">
+	         and username=#{username} 
+	        </if>
+	        <if test="insurance!=null and insurance!=''">
+                insurance=#{insurance},
+             </if>
+             <if test="status!=null and status!=''">
+                status=#{status},
+             </if>
+             <if test="cooperator!=null and cooperator!=''">
+                cooperator=#{cooperator},
+             </if>
+             <if test="updateTime!=null and updateTime!=''">
+                updateTime=#{updateTime},
+             </if>
+             
+   </select>
+   
+   <select id="findPageObjects"
+           resultType="com.dc.exp.entity.ExpExploit">
+           
+         select top ${pageSize} * 
+         from product_list 
+         where productId not in (select top ${startIndex} productId from exploit_develop 
+         where 1=1 
+	        <if test="username!=null and username!=''">
+	         and username=#{username} 
+	        </if>
+	        <if test="insurance!=null and insurance!=''">
+                insurance=#{insurance},
+             </if>
+             <if test="status!=null and status!=''">
+                status=#{status},
+             </if>
+             <if test="cooperator!=null and cooperator!=''">
+                cooperator=#{cooperator},
+             </if>
+             <if test="updateTime!=null and updateTime!=''">
+                updateTime=#{updateTime},
+             </if>
+         order by status asc,putawayTime desc) 
+	        <if test="username!=null and username!=''">
+	         and username=#{username} 
+	        </if>
+	        <if test="insurance!=null and insurance!=''">
+                insurance=#{insurance},
+             </if>
+             <if test="status!=null and status!=''">
+                status=#{status},
+             </if>
+             <if test="cooperator!=null and cooperator!=''">
+                cooperator=#{cooperator},
+             </if>
+             <if test="updateTime!=null and updateTime!=''">
+                updateTime=#{updateTime},
+             </if>
+         order by status asc,putawayTime desc
+         
+   </select>
+   
+   
+   
+   
+   
+   
+   
+   <select id="findObjectById"
+		resultType="com.dc.exp.entity.ExpExploit">
+		select * 
+		from exploit_develop 
+		where developId=#{developId}
+	</select>
+</mapper>

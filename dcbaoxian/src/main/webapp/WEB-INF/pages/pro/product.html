@@ -1,0 +1,227 @@
+
+ <!-- Content Header (Page header) -->
+    <section class="content-header">
+    
+      <h1>产品列表
+        <small>Preview</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+      <li><a href="#">Forms</a></li>
+        <li class="active">产品列表</li>
+      </ol>
+      
+    </section>
+ <section  class="content container-fluid">
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+			
+				<h3 class="box-title">查询列表</h3> 
+				
+				
+				<div class="box-tools">
+					<div  class="input-group " style="background:#3691BD;">
+						
+
+						
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-primary pull-right">更新</button>
+							<button type="button" class="btn btn-primary pull-right">下架</button>
+							<button type="button" class="btn btn-primary pull-right btn-add">上架</button>
+							<button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+							  查询
+							</button>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div style="height:20px"></div>
+				
+				<div class="collapse" id="collapseExample">
+  					<div class="well" style="background:#DFF0F4;">
+   
+  
+						<div class="row">
+		
+		
+		
+							<!-- /.col -->
+							<div class="col-md-3" style="background:#DFF0F4;">
+								
+								
+								<div class="form-group">
+								<label class="col-sm-4 control-label" style="padding: 5px;">&nbsp;&nbsp;险种名称：</label>
+		
+								<div class="col-sm-8">
+								<input type="text" class="form-control input-sm"
+									name="developNumber" id="developNumber" placeholder="险种名称">
+								</div>
+							</div>
+								
+							</div>
+							<div class="col-md-3" style="background:#DFF0F4;">
+								<div class="form-group">
+									<label class="col-sm-4 control-label" style="padding: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态：</label>
+									<div class="col-sm-8">
+										<select id="itName" name="itName" class="form-control input-sm">
+										<option value="" selected="selected">----- 请选择 -----</option>
+										<option value="">上架</option>
+										<option value="">下架</option>
+										<option value="">更新</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3" style="background:#DFF0F4;">
+								<div class="form-group">
+									<label class="col-sm-4 control-label" style="padding: 5px;">&nbsp;&nbsp;合作单位：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control input-sm"
+										name="developNumber" id="developNumber" placeholder="合作单位">
+						            </div>
+					            </div>
+							</div>
+							<div class="col-md-3" style="background:#DFF0F4;">
+								<div class="form-group">
+									<label class="col-sm-4 control-label" style="padding: 5px;">&nbsp;&nbsp;更新时间：</label>
+									<div class="col-sm-8">
+										<input type="date" class="form-control input-sm" name="appointedTime" id="appointedTime">
+									</div>
+								
+								</div>
+								
+							</div>
+							<div style="height: 50px;"></div>
+							<div class="box-footer" style="background:#DFF0F4;">
+									<button type="button" class="btn btn-default btn-search pull-right btn-sm">
+		                               	 查询<i class="fa fa-search"></i>
+									</button>
+								
+					        </div>  
+						
+					</div>
+					
+					
+				</div>
+			</div>
+					
+			<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover table-striped table-bordered table-condensed">
+					<thead>
+						<tr class="info">
+							<th><input type="checkbox" id="checkAll" checked="checked">全选</th>
+							<th>序号</th>
+							<th>险种名称</th>
+							<th>承保公司</th>
+							<th>上架时间</th>
+							<th>下架时间</th>
+							<th>更新时间</th>
+							<th>状态</th>
+							<th>合作单位</th>
+							<th>代理人手续费</th>
+							<th>大诚手续费</th>
+							<th>更新内容</th>
+							<th>详情</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId">
+					    <tr>
+					    	<td><input type="checkbox" class="cBox" name="cItem" value=""></td>
+							<td>1</td>
+							<td>叉车险</td>
+							<td>中国人保</td>
+							<td>2018-8-9</td>
+							<td>2019-6-1</td>
+							<td>2019-6-1</td>
+							<td>下架</td>
+							<td>大诚保险代理公司</td>
+							<td>20</td>
+							<td>200</td>
+							<td>保险方案</td>
+							<td><a class='btn btn-particulars'>查看</a></td>
+					    </tr>
+					    <tr>
+					    	<td><input type="checkbox" class="cBox" name="cItem" value=""></td>
+							<td>2</td>
+							<td>驾乘险</td>
+							<td>中国人保</td>
+							<td>2018-8-9</td>
+							<td>2019-6-1</td>
+							<td>2019-6-1</td>
+							<td>下架</td>
+							<td>大诚保险代理公司</td>
+							<td>200</td>
+							<td>2000</td>
+							<td>保险方案</td>
+							<td><a class='btn btn-particulars'>查看</a></td>
+					    </tr>
+					</tbody>
+					
+				</table>
+			</div>
+			<div id="pageId" class="box-footer clearfix">
+			
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+</div>
+ </section>
+ 
+<style>
+    table.table tr td {
+        border: 1px solid #C9E4D9/* 整体表格边框 */
+    }
+</style>
+<script type="text/javascript">
+$(function(){
+	//按钮事件注册
+    $(".input-group-btn")
+  	.on("click",".btn-add",doLoadEditUI)
+   
+    $("#tbodyId")
+  	.on("click",".btn-particulars",doParticulars)
+  	
+  	
+  	
+	
+})
+
+function doLoadEditUI(){
+		var title;
+	  	title="添加";
+	  	doLoadPage(title);
+	}
+function doLoadPage(title){
+	var url="product/doProductEditUI.do"
+		$("#mainContentId").load(url,function(){
+		$(".box-title").html(title);
+	}) 
+}
+
+function doParticulars(){
+		var title;
+	  	title="产品详情";
+	  	doLoadPage2(title);
+	}
+function doLoadPage2(title){
+	var url="product/doProductParticulars.do"
+		$("#mainContentId").load(url,function(){
+		$(".box-title").html(title);
+	}) 
+}
+
+
+
+
+</script>
+
+
+
+
